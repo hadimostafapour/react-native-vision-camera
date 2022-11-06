@@ -6,6 +6,12 @@ export interface Frame {
    * Whether the underlying buffer is still valid or not. The buffer will be released after the frame processor returns, or `close()` is called.
    */
   isValid: boolean;
+  
+  /**
+   * Returns the rotation of the frame, in degree.
+   */
+  rotation: number;
+
   /**
    * Returns the width of the frame, in pixels.
    */
