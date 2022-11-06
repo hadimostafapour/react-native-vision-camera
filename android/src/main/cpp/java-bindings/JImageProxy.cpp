@@ -18,8 +18,8 @@ int JImageProxy::getWidth() const {
 }
 
 int JImageProxy::getHeight() const {
-  static const auto getWidthMethod = getClass()->getMethod<jint()>("getHeight");
-  return getWidthMethod(self());
+  static const auto getHeightMethod = getClass()->getMethod<jint()>("getHeight");
+  return getHeightMethod(self());
 }
 
 alias_ref<JClass> getUtilsClass() {
@@ -43,6 +43,12 @@ int JImageProxy::getBytesPerRow() const {
   auto utilsClass = getUtilsClass();
   static const auto getBytesPerRowMethod = utilsClass->getStaticMethod<jint(JImageProxy::javaobject)>("getBytesPerRow");
   return getBytesPerRowMethod(utilsClass, self());
+}
+
+int JImageProxy::getRotation() const {
+  auto utilsClass = getUtilsClass();
+  static const auto getRotationMethod = utilsClass->getStaticMethod<jint(JImageProxy::javaobject)>("getRotation");
+  return getRotationMethod(utilsClass, self());
 }
 
 void JImageProxy::close() {

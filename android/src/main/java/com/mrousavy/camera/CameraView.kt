@@ -215,6 +215,7 @@ class CameraView(context: Context, private val frameProcessorThread: ExecutorSer
     }
 
     previewView = PreviewView(context)
+    previewView.scaleType = PreviewView.ScaleType.FIT_CENTER // avoids cropping on takePhoto
     previewView.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
     previewView.installHierarchyFitter() // If this is not called correctly, view finder will be black/blank
     addView(previewView)

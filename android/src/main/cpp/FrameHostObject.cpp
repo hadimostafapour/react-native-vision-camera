@@ -30,6 +30,7 @@ std::vector<jsi::PropNameID> FrameHostObject::getPropertyNames(jsi::Runtime& rt)
   result.push_back(jsi::PropNameID::forUtf8(rt, std::string("width")));
   result.push_back(jsi::PropNameID::forUtf8(rt, std::string("height")));
   result.push_back(jsi::PropNameID::forUtf8(rt, std::string("bytesPerRow")));
+  result.push_back(jsi::PropNameID::forUtf8(rt, std::string("rotation")));
   result.push_back(jsi::PropNameID::forUtf8(rt, std::string("planesCount")));
   result.push_back(jsi::PropNameID::forUtf8(rt, std::string("close")));
   return result;
@@ -75,6 +76,10 @@ jsi::Value FrameHostObject::get(jsi::Runtime& runtime, const jsi::PropNameID& pr
   if (name == "bytesPerRow") {
     this->assertIsFrameStrong(runtime, name);
     return jsi::Value(this->frame->getBytesPerRow());
+  }
+  if (name == "rotation") {
+    this->assertIsFrameStrong(runtime, name);
+    return jsi::Value(this->frame->getRotation());
   }
   if (name == "planesCount") {
     this->assertIsFrameStrong(runtime, name);

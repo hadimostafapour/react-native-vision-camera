@@ -39,4 +39,11 @@ public class ImageProxyUtils {
     public static int getBytesPerRow(ImageProxy imageProxy) {
         return imageProxy.getPlanes()[0].getRowStride();
     }
+
+    @DoNotStrip
+    @Keep
+    public static int getRotation(ImageProxy imageProxy) {
+        return imageProxy.getImageInfo().getRotationDegrees();
+    }
+    
 }
